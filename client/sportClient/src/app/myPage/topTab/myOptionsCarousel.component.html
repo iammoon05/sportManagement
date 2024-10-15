@@ -1,0 +1,24 @@
+<div class="p-20 card">
+  <p-carousel [value]="staticTabs" [numVisible]="3" [numScroll]="1" [circular]="false" [showIndicators]="true">
+    <ng-template let-staticTab pTemplate="item">
+      <mat-card appearance="outlined" class="ml-2 mr-2" (click)="changeSelectedTab(staticTab.header)">
+        <mat-card-content>
+          <div class="flex flex-row">
+            <div class="flex items-center basis-1/4">
+              <mat-icon fontIcon="{{ staticTab.icon }}" style="transform: scale(1.8);"></mat-icon>
+            </div>
+            <div class="flex flex-col items-start basis-3/4">
+              <span class="text-xl"> {{ staticTab.header }}</span>
+              <span class="text-gray-500"> {{ staticTab.subHeader }}</span>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </ng-template>
+
+  </p-carousel>
+
+  <div class="mt-10">
+    <ng-template [cdkPortalOutlet]="selectedTabPortal"></ng-template>
+  </div>
+</div>
